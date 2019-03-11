@@ -1,0 +1,80 @@
+{% extends 'receptionisttemplates/receptionistbase.html' %}
+{% load static %}
+{% block active2 %}active{% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+    {% if messages %}
+    <div class="success-message">
+    <div class = "alert alert-success background-success" style="z-index: 10 ; position: absolute;   right:100px;
+  top: 40px;">
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    </div>
+  </div>
+        {% endif %}
+<div class="page-header">
+<div class="row align-items-end">
+<div class="col-lg-8">
+<div class="page-header-title">
+<div class="d-inline">
+<h4>Receptionist List</h4>
+<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+
+<div class="card">
+<div class="card-header col-md-10">
+<h5>Lead List</h5>
+        <a href="{% url 'cmsapp:receptionistleadcreate' %}" style="float: right;"><i class="icofont icofont-plus-circle" style="font-size: 40px !important; color: #1bc6cc;"></i></a>
+</div>
+<div class="card-block task-list">
+<div class="table-responsive">
+<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Name</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Visa Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+    {% for lead in receptionistleadlist %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="{% url 'cmsapp:receptionistleaddetail' lead.id %}">{{lead.name}}</a></td>
+<td>{{lead.address}}</td>
+<td>{{lead.phone}}</td>
+<td>{{lead.email}}</td>
+<td>{{lead.visa_status}}</td>
+<td>
+    <a data-remote="{% url 'cmsapp:receptionistleaddelete' lead.id %}" data-toggle="modal" data-target="#cms" href="{% url 'cmsapp:adminleaddelete' lead.id %}" style="padding-right: 7px; margin: 5px;">
+    <i class="icofont icofont-trash" style="font-size: 20px !important;"></i>
+    </a>
+    <a href="{% url 'cmsapp:receptionistleadupdate' lead.id %}" style="padding-right: 7px;  margin: 5px;"> 
+    <i class="icofont icofont-refresh" style="font-size: 20px !important;"></i>
+    </a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}
+

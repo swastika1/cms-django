@@ -1,0 +1,57 @@
+{% extends 'consultanttemplates/consultantbase.html' %}
+{% load static %}
+{% block active13 %} active {% endblock %}
+
+{% block css %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class="page-body">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				<h5>Your Activity Log</h5>
+			</div>
+			<div class="card-block">
+				<div class="j-wrapper" style="padding:0;">
+					<form method="POST" class="j-pro" id="j-pro" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="j-content">
+							<div class="j-row">
+								<div class="j-span12 j-unit">
+									<label class="j-label">Lead</label>
+
+									<div class="j-input">
+										{{form.lead}}
+									</div>
+								</div>
+							</div>
+							<div class="j-unit">
+								<label class="j-label">Note</label>
+								<div class="j-input">
+									<label class="j-icon-left" for="message">
+									<i class="icofont icofont-file-text"></i>
+									</label>
+									{{form.note}}
+									<span class="j-tooltip j-tooltip-right-top">Describe your activity as detailed as possible</span>
+								</div>
+							</div>
+							<div class="j-response"></div>
+						</div>
+						<div class="j-footer">
+							<button type="submit" class="btn btn-primary">Create</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

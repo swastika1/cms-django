@@ -1,0 +1,185 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+{% block active8 %}active{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+{% if messages%}
+<div class="success-message">
+<div class = "alert alert-success background-success" style="z-index: 10 ; position: absolute;   right:120px;
+  top: 40px;">
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+</div>
+</div>
+{% endif %} 
+
+<div class="col-sm-12">
+	<div class="card">
+	  <div class="card-header col-md-12">
+	   <h5 style="display: inline;"><b>Task List</b></h5>
+		<a href="{% url 'cmsapp:admintaskcreate' %}" style="float: right;"><i class="icofont icofont-plus-circle" style="font-size: 40px !important; color: #1bc6cc;"></i></a>
+	   </div>
+		<div class="card-block task-list">
+			<div class="table-responsive">
+				<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+					<thead>
+						<tr>
+							<th>S.N.</th>
+							<th>Task title</th>
+							<th>Task Description</th>
+							<th>Status</th>
+							<th>Priority</th>
+							<th>Due Date</th>
+							<th>Assigned to</th>
+							<th>Action</th>
+							
+						</tr>
+					</thead>
+					<tfoot>
+					        <tr>
+					            <th>S.N.</th>
+								<th>Task title</th>
+								<th>Task Description</th>
+								<th>Status</th>
+								<th>Priority</th>
+								<th>Due Date</th>
+								<th>Assigned to</th>
+								<th>Action</th>
+							</tr>
+					</tfoot>
+					<tbody class="task-page">
+						{% for task in receivelist %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{task.title}}</td>
+							<td>{{task.content}}</td>
+							<td>
+										<!-- {{task.status}} -->
+								<!-- <input type="hidden" name="task_status" value="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}"> -->
+							
+									<select data-selected="{{task.status}}" value ="{{task.status}}" id="verify-button" name="select" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" >
+										
+										<option value="Processing" >Processing</option>
+										<option value="Pending" >Pending</option>
+										<option value="Verified" >Verified</option>
+										<option value="Completed" >Completed</option>
+
+										
+									</select>
+							</td>
+							<td>{{task.priority}}</td>
+							<td>{{task.due_date}}</td>
+							<td>{% for user in task.assigned_to.all %}
+							{{user.username}} 
+							{% endfor %}</td>
+							<td>
+								<a data-remote="{% url 'cmsapp:admintaskdelete' task.id %}" data-toggle="modal" data-target="#cms" href="{% url 'cmsapp:admintaskdelete' task.id %}" style="padding-right: 7px; margin: 5px;">
+								<i class="icofont icofont-trash" style="font-size: 20px !important;"></i>
+								</a>
+							</td>
+										
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div> 
+
+<!-- <div class="page-body">
+	<div class="row">
+		<div class="col-sm-12">
+
+			<div class="card">
+				<div class="card-header">
+					<h5>Task List</h5>
+					<a href="{% url 'cmsapp:admintaskcreate' %}" style="float: right;"><i class="icofont icofont-plus-circle" style="font-size: 40px !important; color: #1bc6cc;"></i></a>
+				</div>
+				<div class="card-block task-list">
+					<div class="table-responsive">
+						<table id="simpletable" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+							<thead>
+								<tr>
+					            <th>S.N.</th>
+								<th>Task title</th>
+								<th>Task Description</th>
+								<th>Status</th>
+								<th>Priority</th>
+								<th>Due Date</th>
+								<th>Assigned to</th>
+								<th>Action</th>
+								</tr>
+							</thead>
+							<tbody class="task-page">
+								{% for task in receivelist %}
+								<tr>
+									<td>{{forloop.counter}}</td>
+									<td>{{task.title}}</td>
+									<td>{{task.content}}</td>
+									<td>
+										<select name="select" class="form-control form-control-sm">
+											<option value="opt1">Open</option>
+											<option value="opt2">Resolved</option>
+											<option value="opt3">Invalid</option>
+											<option value="opt4">On hold</option>
+											<option value="opt5">Close</option>
+										</select>
+									</td>
+									<td>{{task.priority}}</td>
+									<td>{{task.due_date}}</td>
+									<td>{{task.assigned_to}}</td>
+									<td>
+										<a data-remote="{% url 'cmsapp:admintaskdelete' task.id %}" data-toggle="modal" data-target="#cms" href="{% url 'cmsapp:admintaskdelete' task.id %}" style="padding-right: 7px; margin: 5px;">
+										<i class="icofont icofont-trash" style="font-size: 20px !important;"></i>
+										</a>
+									</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+	</div>
+
+</div> -->
+
+{% endblock %}
+{% block js %}
+
+<script type="text/javascript">
+	var status = $('#verify-button').attr('data-selected');
+	$('#verify-button').val(status);
+	$('#verify-button').on('change', function(){
+		// alert("i m here");
+		//  $(".verify-button:selected").text($(".verify-button").val());
+		var request_url= $(this).attr('data-url');
+		var task_id = $(this).attr('data-id');
+		var task_status =  $('#verify-button').find(":selected").text();
+		$.ajax({
+			url: request_url,
+			data: {
+				'task_id': task_id,
+				'task_status': task_status,
+			},
+			success: function(data){
+				var status = data.status;
+				var status_id = "#status-" + data.pk;
+				$(status_id).text(status);
+			}
+		});       
+	});
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,78 @@
+{% extends 'teachertemplates/teacherbase.html' %}
+{% load static %}
+{% block active4 %}active{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block body %}
+<div class="page-header">
+<div class="row align-items-end">
+<div class="col-lg-8">
+<div class="page-header-title">
+<div class="d-inline">
+<h4>Receptionist List</h4>
+<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+
+<div class="card">
+<div class="card-header col-md-12">
+<h5>Receptionist List</h5>
+</div>
+<div class="card-block task-list">
+<div class="table-responsive">
+<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Name</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Email</th>
+
+
+
+
+</tr>
+</thead>
+<tbody>
+    {% for reception in teacherreceptionistlist %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{reception.name}}</td>
+<td>{{reception.address}}</td>
+<td>{{reception.phone}}</td>
+<td>{{reception.email}}</td>
+
+</tr>
+{% endfor %}
+</tbody>
+<!-- <tfoot>
+<tr>
+<th>Name</th>
+<th>Position</th>
+<th>Office</th>
+<th>Age</th>
+<th>Start date</th>
+<th>Salary</th>
+</tr>
+</tfoot> -->
+
+</table>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+

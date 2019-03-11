@@ -1,0 +1,185 @@
+{% extends 'leadtemplates/leadbase.html' %}
+{% block body %}
+{% if messages %}
+<div class="success-message">
+<div class = "alert alert-success background-success" style = "z-index :10; position: absolute; right:50px ; top: 10px;">
+    {% for message in messages %}
+        Welcome {{lead.name}}!
+        {{message}}
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+<div class="row">
+<div class="col-sm-12">
+
+<div class="card">
+<div class="card-header">
+<h5>Task List</h5>
+<span>task lists sorted as priority</span>
+</div>
+<div class="card-block">
+
+<div class="row">
+<div class="col-lg-12 col-xl-12">
+ <div class="sub-title">Tasks</div>
+
+<ul class="nav nav-tabs  tabs" role="tablist">
+<!-- <li class="nav-item">
+<a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Home</a>
+</li> -->
+<li class="nav-item">
+<a class="nav-link active" data-toggle="tab" href="#profile1" role="tab">Urgent Tasks</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Medium Priority Tasks</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Low Priority Tasks</a>
+</li>
+</ul>
+
+<div class="tab-content tabs card-block">
+<div class="tab-pane active" id="profile1" role="tabpanel">
+<p class="m-0">
+
+	<div class="row">
+<div class="col-md-4">
+	{% for task in sendlist %}
+{% if task.priority == "Urgent" %}
+
+
+<div class="card card-border-success">
+	<div class="card-header">
+		<a href="#" class="card-title"><h5>{{task.title|title}}</h5> </a>
+		<span class="label  f-right" style="background-color: #999190;"> Due: {{task.due_date}} </span>
+	</div>
+
+
+<div class="card-block">
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="task-detail">{{task.content}}</p>
+		</div>
+	</div>
+</div>
+
+<div class="card-footer">
+	<div class="task-list-table">
+	<p class="task-due"><strong> Assigned by: </strong><strong class="label label-danger">
+		{{task.assigned_by}}
+		</strong>
+		<strong> Status : </strong><strong class="label label-danger">{{task.status}}</strong>
+	</p>
+	</div>
+</div>
+</div>
+
+{% endif %}
+
+{% endfor %}
+</div>
+</div>
+
+
+</p>
+</div>
+<div class="tab-pane" id="messages1" role="tabpanel">
+<p class="m-0">
+
+	<div class="row">
+<div class="col-md-4">
+	{% for task in sendlist %}
+{% if task.priority == "Medium" %}
+
+
+<div class="card card-border-success">
+	<div class="card-header">
+		<a href="#" class="card-title"><h5>{{task.title|title}}</h5> </a>
+		<span class="label  f-right" style="background-color: #999190;"> Due: {{task.due_date}} </span>
+	</div>
+
+
+<div class="card-block">
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="task-detail">{{task.content}}</p>
+		</div>
+	</div>
+</div>
+
+<div class="card-footer">
+	<div class="task-list-table">
+	<p class="task-due"><strong> Assigned by: </strong><strong class="label label-danger">
+		{{task.assigned_by}}
+		</strong>
+		<strong> Status : </strong><strong class="label label-danger">{{task.status}}</strong>
+	</p>
+	</div>
+</div>
+</div>
+
+{% endif %}
+
+{% endfor %}
+</div>
+</div>
+
+</p>
+</div>
+<div class="tab-pane" id="settings1" role="tabpanel">
+<p class="m-0">
+	<div class="row">
+<div class="col-md-4">
+	{% for task in sendlist %}
+{% if task.priority == "Low" %}
+
+
+<div class="card card-border-success">
+	<div class="card-header">
+		<a href="#" class="card-title"><h5>{{task.title|title}}</h5> </a>
+		<span class="label  f-right" style="background-color: #999190;"> Due: {{task.due_date}} </span>
+	</div>
+
+
+<div class="card-block">
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="task-detail">{{task.content}}</p>
+		</div>
+	</div>
+</div>
+
+<div class="card-footer">
+	<div class="task-list-table">
+	<p class="task-due"><strong> Assigned by: </strong><strong class="label label-danger">
+		{{task.assigned_by}}
+		</strong>
+		<strong> Status : </strong><strong class="label label-danger">{{task.status}}</strong>
+	</p>
+	</div>
+</div>
+</div>
+
+{% endif %}
+
+{% endfor %}
+</div>
+</div>
+
+</p>
+</div>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

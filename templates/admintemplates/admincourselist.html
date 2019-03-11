@@ -1,0 +1,77 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% block active12 %}active{% endblock %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block body %}
+
+ {% if messages%}
+<div class="success-message">
+<div class = "alert alert-success background-success" style="z-index: 10 ; position: absolute;   right:100px;
+  top: 40px;">
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+<div class="row">
+   
+   <div class="col-sm-12">
+
+       <div class="card">
+            <div class="card-header">
+              <h6 style="display: inline;"><b>Course List</b></h6>
+              <a href="{% url 'cmsapp:admincoursecreate' %}" style="float: right;"><i class="icofont icofont-plus-circle" style="font-size: 40px !important; color: #1bc6cc;"></i></a>
+            </div>
+               <div class="card-block task-list">
+                   <div class="dt-responsive table-responsive">
+						<table id="datatables" class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>S.N</th>
+									<th>Title</th>
+									<th>University</th>
+									<th>Fee Structure</th>
+									<th>About</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for course in admincourselist %}
+								<tr>
+								<td>{{forloop.counter}}</td>
+								<td>{{course.title}}</td>
+								
+								<td>
+								{% for university in course.university.all %}
+							    {{university.name}}
+								{% endfor %}
+								</td>
+								<td>{{course.fee_structure}}</td>
+								<td>{{course.about}}</td>
+								<td>
+			                    <a data-remote="{% url 'cmsapp:admincoursedelete' course.id %}" data-toggle="modal" data-target="#cms" href="{% url 'cmsapp:admincoursedelete' course.id %}" style="padding-right: 7px; margin: 5px;">
+			                    <i class="icofont icofont-trash" style="font-size: 20px !important;"></i>
+			                    </a>
+			                    <a href="{% url 'cmsapp:admincourseupdate' course.id %}" style="padding-right: 7px;  margin: 5px;"> 
+			                    <i class="icofont icofont-refresh" style="font-size: 20px !important;"></i>
+			                    </a>
+			                    </td> 
+								</tr>
+							{% endfor %}
+							</tbody>
+		
+						</table>
+                    </div>
+                </div>
+         </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+

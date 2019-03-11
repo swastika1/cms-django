@@ -1,0 +1,68 @@
+{% extends 'teachertemplates/teacherbase.html' %}
+{% load static %}
+{% block active1 %}active{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block body %}
+<div class="page-header">
+<div class="row align-items-end">
+<div class="col-lg-8">
+<div class="page-header-title">
+<div class="d-inline">
+<h4>Student List</h4>
+<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+
+<div class="card">
+<div class="card-header col-md-12">
+<h5>Student List</h5>
+</div>
+<div class="card-block task-list">
+<div class="table-responsive">
+<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Name</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Language Course</th>
+<th>Assigned To</th>
+
+
+</tr>
+</thead>
+<tbody>
+	{% for student in teacherstudentlist %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{student.name}}</td>
+<td>{{student.address}}</td>
+<td>{{student.phone}}</td>
+<td>{{student.language_course}}</td>
+<td>{{student.assigned_to}}</td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+
+	

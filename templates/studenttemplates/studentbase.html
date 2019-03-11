@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />  
+<head>
+	<title>Student Panel</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="#">
+<meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+<meta name="author" content="#">
+
+<link rel="icon" href="https://colorlib.com/polygon/adminty/files/assets/images/favicon.ico" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="{% static '/files/bower_components/bootstrap/css/bootstrap.min.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/icon/themify-icons/themify-icons.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/icon/icofont/css/icofont.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/icon/feather/css/feather.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static '/files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/pages/data-table/css/buttons.dataTables.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/files/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/pages/data-table/extensions/responsive/css/responsive.dataTables.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/files/assets/css/jquery.mCustomScrollbar.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+<style type="text/css">
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+      background-color: #fff !important;
+      color: #444 !important; 
+  }
+</style>
+	{% block css %}
+	{% endblock %}
+	</head>
+<body>
+<div class="theme-loader">
+<div class="ball-scale">
+<div class='contain'>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+<div class="ring">
+<div class="frame"></div>
+</div>
+</div>
+</div>
+</div>
+  
+<div id="pcoded" class="pcoded">
+<div class="pcoded-overlay-box"></div>
+<div class="pcoded-container navbar-wrapper">
+<nav class="navbar header-navbar pcoded-header">
+<div class="navbar-wrapper">
+<div class="navbar-logo">
+<a class="mobile-menu" id="mobile-collapse" href="#!">
+<i class="feather icon-menu"></i>
+</a>
+<a href="{% url 'cmsapp:studentpanel' %}">
+<img class="img-fluid" src="{% static '/images//logo.png' %}" alt="Theme-Logo" />
+</a>
+<a class="mobile-options">
+<i class="feather icon-more-horizontal"></i>
+</a>
+</div>
+<div class="navbar-container container-fluid">
+<ul class="nav-left">
+<li class="header-search">
+<div class="main-search morphsearch-search">
+<div class="input-group">
+ <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+<input type="text" class="form-control">
+<span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+</div>
+</div>
+</li>
+<li>
+<a href="#!" onclick="javascript:toggleFullScreen()">
+<i class="feather icon-maximize full-screen"></i>
+</a>
+</li>
+</ul>
+<ul class="nav-right">
+
+<li class="user-profile header-notification">
+<div class="dropdown-primary dropdown">
+<div class="dropdown-toggle" data-toggle="dropdown">
+<img src="{{student.image.url}}" class="img-radius" alt="User-Profile-Image">
+<span>{{student.name}}</span>
+<i class="feather icon-chevron-down"></i>
+</div>
+<ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+<li>
+<a href="{% url 'cmsapp:studentdetail' student.id %}">
+<i class="feather icon-user"></i>
+{{student.user}}
+</a>  
+</li>
+<li>
+<a href="{% url 'cmsapp:studentpasswordchange' student.id %}">
+<i class="feather icon-lock"></i> Change Password
+</a>
+</li>
+<li>
+<a href="{% url 'cmsapp:logout' %}">
+<i class="feather icon-log-out"></i> Logout
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<div class="pcoded-main-container">
+<div class="pcoded-wrapper">
+<nav class="pcoded-navbar">
+<div class="pcoded-inner-navbar main-menu">
+<ul class="pcoded-item pcoded-left-item">
+<li class="pcoded-hasmenu active pcoded-trigger">
+
+<li class="{% block active1 %}{% endblock %}">
+<a href="{% url 'cmsapp:studentteacherlist' %}">
+<span class="pcoded-micon"><i class="icofont icofont-graduate-alt"></i></span>
+<span class="pcoded-mtext">Teacher</span>
+</a>
+</li>
+<li class="{% block active2 %}{% endblock %}">
+<a href="{% url 'cmsapp:studentreceptionistlist' %}">
+<span class="pcoded-micon"><i class="feather icon-users"></i></span>
+<span class="pcoded-mtext">Receptionist</span>
+</a>
+</li>
+</div>
+</nav>
+<div class="pcoded-content">
+<div class="pcoded-inner-content">
+<div class="main-body">
+<div class="page-wrapper">
+<div class="page-body">
+{% block body %}
+{% endblock %}
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{% static '/files/bower_components/jquery/js/jquery.min.js' %}"></script>
+<script data-cfasync="false" src="{% static '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/files/bower_components/jquery-ui/js/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/files/bower_components/popper.js/js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/files/bower_components/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/files/bower_components/modernizr/js/modernizr.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/files/bower_components/chart.js/js/Chart.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static '/files/assets/pages/data-table/js/jszip.min.js' %}"></script>
+<script src="{% static '/files/assets/pages/data-table/js/pdfmake.min.js' %}"></script>
+<script src="{% static '/files/assets/pages/data-table/js/vfs_fonts.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static '/files/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static '/files/assets/pages/widget/amchart/amcharts.js' %}"></script>
+<script src="{% static '/files/assets/pages/widget/amchart/serial.js' %}"></script>
+<script src="{% static '/files/assets/pages/widget/amchart/light.js' %}"></script>
+<script src="{% static '/files/assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/files/assets/js/SmoothScroll.js' %}"></script>
+<script src="{% static '/files/assets/js/pcoded.min.js' %}"></script>
+
+
+<script src="{% static '/files/assets/js/vartical-layout.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/files/assets/js/script.min.js' %}"></script>
+<script type="text/javascript" src="https://
+cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> -->
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#datatables').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search records",
+        }
+    });
+    var table = $('#datatables').DataTable();
+    $('.card .material-datatables label').addClass('form-group');
+});
+
+</script>
+<script type="text/javascript">
+        $(function () {
+            $('#id_due_date').datetimepicker({
+              format: 'YYYY-MM-DD',
+            });
+        });
+</script>
+<script type="text/javascript">
+    window.setTimeout(function() {
+    $(".alert").fadeTo(5000, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 1000);
+</script>
+{% block js %}
+{% endblock %}
+
+</body>
+
+
+</html>

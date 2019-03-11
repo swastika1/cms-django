@@ -1,0 +1,199 @@
+{% extends 'consultanttemplates/consultantbase.html' %}
+{% load static %}
+{% block body %}
+<!-- <div class="pcoded-content">
+<div class="pcoded-inner-content">
+
+<div class="main-body">
+<div class="page-wrapper">
+
+<div class="page-header">
+<div class="row align-items-end">
+
+<div class="d-inline">
+<h4>{{consultantuniversitydetail.name|title}} University</h4>
+<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+ -->
+
+ 	<h4 style="font-weight: bold;"  style="text-align: center;"> {{consultantuniversitydetail.name|title}} University</h4>
+ 	
+ 
+
+
+<div class="page-body">
+
+<div class="row">
+<div class="col-lg-12">
+<div class="cover-profile">
+ <div class="profile-bg-img">
+<img class="profile-bg-img img-fluid" src="{{consultantuniversitydetail.image.url}}" alt="bg-img" style="height: 500px; width: 100%; ">
+<div class="card-block user-info">
+<div class="col-md-12">
+<div class="media-left">
+<a href="#" class="profile-image">
+</a>
+</div>
+<div class="media-body row">
+<div class="col-lg-12">
+<div class="user-title">
+<h2>{{consultantuniversitydetail.name}}</h2>
+</div>
+</div>
+<div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="tab-content">
+
+<!-- <div class="tab-pane active" id="personal" role="tabpanel"> -->
+
+<div class="card">
+<div class="card-header">
+<h5 class="card-header-text">About University</h5>
+
+</div>
+<div class="card-block">
+<div class="view-info">
+<div class="row">
+<div class="col-lg-12">
+<div class="general-info">
+<div class="table-responsive">
+<table class="table m-0">
+<tbody>
+<tr>
+<th scope="row">Full Name</th>
+<td>{{consultantuniversitydetail.name}}</td>
+</tr>
+<tr>
+<th scope="row">Phone</th>
+<td>{{consultantuniversitydetail.phone}}</td>
+</tr>
+<tr>
+<th scope="row">Address</th>
+ <td>{{consultantuniversitydetail.address}}</td>
+</tr>
+<tr>
+<th scope="row">Email</th>
+<td>{{consultantuniversitydetail.email}}</td>
+</tr>
+<tr>
+	<th scope="row">Country</th>
+<td>{{consultantuniversitydetail.country}}</td>
+</tr>
+<tr>
+<th scope="row">Deadline</th>
+<td>{{consultantuniversitydetail.deadline}}</td>
+</tr>
+<tr>
+<th scope="row">Relation</th>
+<td>{{consultantuniversitydetail.relation}}</td>
+</tr>
+<tr>
+<th scope="row">Contact Person</th>
+<td>{{consultantuniversitydetail.contact_person}}</td>
+</tr>
+<tr>
+<th scope="row">Term</th>
+<td>{{consultantuniversitydetail.term}}</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="card">
+<div class="card-header">
+<h5 class="card-header-text">About:</h5>
+
+</div>
+<div class="card-block user-desc">
+<div class="view-desc">
+<p>{{consultantuniversitydetail.about}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="card">
+<div class="card-header">
+<h5 class="card-header-text">Features:</h5>
+</div>
+<div class="card-block user-desc">
+<div class="view-desc">
+<p>{{consultantuniversitydetail.features}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="card">
+<div class="card-header">
+<h5 class="card-header-text">Requirements:</h5>
+</div>
+<div class="card-block user-desc">
+<div class="view-desc">
+<p>{{consultantuniversitydetail.requirements}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="card">
+<div class="card-header">
+<h5 class="card-header-text">Scholarship Plans:</h5>
+</div>
+<div class="card-block user-desc">
+<div class="view-desc">
+<p>{{consultantuniversitydetail.scholarship}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

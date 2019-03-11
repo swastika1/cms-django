@@ -1,0 +1,273 @@
+{% extends 'consultanttemplates/consultantbase.html' %}
+{% load static %}
+{% block active14 %}active{% endblock %}
+
+
+{% block body %}
+
+
+{% if messages%}
+<div class="success-message">
+	{% for message in messages %}
+	<div class = "alert alert-success background-success" style="z-index: 10 ; position: absolute; right:20px; top: 40px;">
+		{{message}}
+	</div>
+	{% endfor %}
+</div>
+{% endif %} 
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>Tasks And Appointments</h4>
+				<!-- <span>Your jobs listed below</span> -->
+			</div>
+			<div class="card-block">
+				<div class="row">
+					<div class="col-lg-12 col-xl-6">
+						<div class="sub-title">Tasks     
+							<a href="{% url 'cmsapp:consultanttaskcreate' %}" >
+								<button class ="btn btn-sm btn-primary" style="margin-left:300px ">Add Task</button>
+							</a>
+						</div>
+
+						<ul class="nav nav-tabs  tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#urgent" role="tab">Urgent Tasks</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#medium" role="tab">Medium Priority Tasks</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#low" role="tab">Low Priority Tasks</a>
+							</li>
+						</ul>
+
+						<div class="tab-content tabs card-block">
+							<div class="tab-pane active" id="urgent" role="tabpanel">
+								<p class="m-0">
+									<div class="row">
+										<div class="col-md-12">
+											{% for task in sendlist %}
+											{% if task.priority == "Urgent" %}
+											<div class="card card-border-success">
+												<div class="card-header">
+													<a href="#" class="card-title"><h5>{{task.title|title}}</h5> </a>
+													<span class="label  f-right" style="background-color: #999190;"> Deadline: {{task.due_date}} </span>
+												</div>
+
+
+												<div class="card-block">
+													<div class="row">
+														<div class="col-sm-12">
+															<p class="task-detail">{{task.content|truncatechars:'150'}}</p>
+														</div>
+													</div>
+												</div>
+
+												<div class="card-footer">
+													<div class="task-list-table">
+														<div class="task-due">
+															<div class="py-3">
+																<strong> Assigned by: </strong>
+																<strong class="label label-danger">{{task.assigned_by}}</strong>
+																<strong> Status : </strong>
+																<strong id="status-{{task.id}}" class="label label-danger">{{task.status}}</strong>
+															</div>
+
+															{% if task.status != 'Verified' %}
+															<strong>Change Status:</strong> 
+															<div class="btn-group d-line" role="group" data-toggle="tooltip" data-placement="right" title="Change Status">
+																<button type="button" class="btn btn-warning btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Pending">Pending</button>
+																<button type="button" class="btn btn-info btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Processing">Processing</button>
+																<button type="button" class="btn btn-primary btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Completed">Completed</button>
+															</div>
+															{% endif %}
+														</div>
+													</div>
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+								</p>
+							</div>
+							<div class="tab-pane" id="medium" role="tabpanel">
+								<p class="m-0">
+									<div class="row">
+										<div class="col-md-12">
+											{% for task in sendlist %}
+											{% if task.priority == "Medium" %}
+											<div class="card card-border-success">
+												<div class="card-header">
+													<a href="#" class="card-title"><h5>{{task.title|title}}</h5> </a>
+													<span class="label  f-right" style="background-color: #999190;"> Deadline: {{task.due_date}} </span>
+												</div>
+
+
+												<div class="card-block">
+													<div class="row">
+														<div class="col-sm-12">
+															<p class="task-detail">{{task.content|truncatechars:'150'}}</p>
+														</div>
+													</div>
+												</div>
+
+												<div class="card-footer">
+													<div class="task-list-table">
+														<div class="task-due">
+															<div class="py-3">
+																<strong> Assigned by: </strong>
+																<strong class="label label-danger">{{task.assigned_by}}</strong>
+																<strong> Status : </strong>
+																<strong id="status-{{task.id}}" class="label label-danger">{{task.status}}</strong>
+															</div>
+
+															{% if task.status != 'Verified' %}
+															<strong>Change Status:</strong> 
+															<div class="btn-group d-line" role="group" data-toggle="tooltip" data-placement="right" title="Change Status">
+																<button type="button" class="btn btn-warning btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Pending">Pending</button>
+																<button type="button" class="btn btn-info btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Processing">Processing</button>
+																<button type="button" class="btn btn-primary btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Completed">Completed</button>
+															</div>
+															{% endif %}
+														</div>
+													</div>
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+								</p>
+							</div>
+							<div class="tab-pane" id="low" role="tabpanel">
+								<p class="m-0">
+									<div class="row">
+										<div class="col-md-12">
+											{% for task in sendlist %}
+											{% if task.priority == "Low" %}
+											<div class="card card-border-success">
+												<div class="card-header">
+													<a href="#" class="card-title"><h5>{{task.title|title}}</h5> </a>
+													<span class="label  f-right" style="background-color: #999190;"> Deadline: {{task.due_date}} </span>
+												</div>
+
+
+												<div class="card-block">
+													<div class="row">
+														<div class="col-sm-12">
+															<p class="task-detail">{{task.content|truncatechars:'150'}}</p>
+														</div>
+													</div>
+												</div>
+
+												<div class="card-footer">
+													<div class="task-list-table">
+														<div class="task-due">
+															<div class="py-3">
+																<strong> Assigned by: </strong>
+																<strong class="label label-danger">{{task.assigned_by}}</strong>
+																<strong> Status : </strong>
+																<strong id="status-{{task.id}}" class="label label-danger">{{task.status}}</strong>
+															</div>
+
+															{% if task.status != 'Verified' %}
+															<strong>Change Status:</strong> 
+															<div class="btn-group d-line" role="group" data-toggle="tooltip" data-placement="right" title="Change Status">
+																<button type="button" class="btn btn-warning btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Pending">Pending</button>
+																<button type="button" class="btn btn-info btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Processing">Processing</button>
+																<button type="button" class="btn btn-primary btn-mini waves-effect waves-light verify-button" data-id="{{task.id}}" data-url="{% url 'cmsapp:taskstatusupdate' %}" data-status="Completed">Completed</button>
+															</div>
+															{% endif %}
+														</div>
+													</div>
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 col-xl-6">
+						<div class="sub-title">Appointments
+							<a href="{% url 'cmsapp:consultantappointmentcreate' %}">
+								<button class ="btn btn-sm btn-primary" style="margin-left:200px ">Add Appointment</button></a>
+							</div>
+
+							<div class="tab-content tabs card-block">
+								<div class="tab-pane active" id="home2" role="tabpanel">
+									<p class="m-0">
+										<div class="row">
+											<div class="col-md-10">
+												{% for appointment in appointments %}
+												<div class="card card-border-success">
+													<div class="card-header">
+														<a href="#" class="card-title"><h5>{{appointment.subject|title}}</h5> </a>
+														<span class="label  f-right" style="background-color: #999190;"> Deadline: {{appointment.appointment_date}} </span>
+													</div>
+
+
+													<div class="card-block">
+														<div class="row">
+															<div class="col-sm-12">
+																<p class="task-detail">{{appointment.note}}</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-footer">
+														<div class="task-list-table">
+															<p class="task-due"><strong> Appointment of: </strong><strong class="label label-danger">
+																{{appointment.lead}}
+															</strong>
+															<strong> Status : </strong><strong class="label label-danger">{{appointment.status}}</strong>
+														</p>
+													</div>
+												</div>
+											</div>
+
+											{% endfor %}
+										</div>
+									</div>
+
+
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block js %}
+
+<script type="text/javascript">
+	$('.verify-button').on('click', function(){
+		var request_url= $(this).attr('data-url');
+		var task_id = $(this).attr('data-id');
+		var task_status = $(this).attr('data-status');
+		$.ajax({
+			url: request_url,
+			data: {
+				'task_id': task_id,
+				'task_status': task_status,
+			},
+			success: function(data){
+				var status = data.status;
+				var status_id = "#status-" + data.pk;
+				$(status_id).text(status);
+			}
+		});       
+	});
+</script>
+{% endblock %}

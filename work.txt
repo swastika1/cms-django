@@ -1,0 +1,13 @@
+to do-
+
+1. Remove user name from data tables list wherever required \m/
+2. Display Username in Top Middle  \m/
+3. One to One Relationship in Model for Users \m/
+4. gte and lte use in nested query forward and reverse access in model for study materials
+5. CDN download should be done and put it locally in static to make system fast
+6. Mobile number pattern validation \m/
+7. Lead Creation CRUD in Receptionist Panel 
+8. Forms Label placeholder should be present in all forms \m/
+9. Ordering should be done  
+10. Select done
+11. Notification system

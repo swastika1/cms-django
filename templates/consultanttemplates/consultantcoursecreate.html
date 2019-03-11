@@ -1,0 +1,66 @@
+{% extends 'consultanttemplates/consultantbase.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+		<div class="col-sm-12">
+			<div class="card">
+				<div class="card-header" style="padding-bottom: 0px;">
+					<h6><b>University Course Create Form</b></h6>
+				</div>
+				<div class="card-block">
+					<div class="j-wrapper j-wrapper-640">
+						<form method="POST" class="j-pro" id="j-pro" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="j-content">
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<label class="j-label">Title</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="first_name">
+											<i class="icofont icofont-book-alt"></i>
+											</label>
+											{{form.title}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<label class="j-label">Fee Structure</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="post">
+											<i class="icofont icofont-file-code"></i>
+											</label>
+											{{form.fee_structure}}
+										</div>
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">Select Universities</label>
+									<div class="j-input">
+										{{form.university}}
+										<span class="j-tooltip j-tooltip-right-top">Choose University</span>
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">About</label>
+									<div class="j-input">
+										{{form.about}}
+										<span class="j-tooltip j-tooltip-right-top">About University</span>
+									</div>
+								</div>
+								<div class="j-response"></div>
+							</div>
+							<div class="j-footer">
+								<button type="submit" class="btn btn-primary">Send</button>
+							 	<button type="reset" class="btn btn-default m-r-20">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

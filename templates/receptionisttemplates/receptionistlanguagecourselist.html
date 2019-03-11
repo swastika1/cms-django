@@ -1,0 +1,75 @@
+{% extends 'receptionisttemplates/receptionistbase.html' %}
+{% load static %}
+{% block active8 %}active{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block body %}
+ {% if messages%}
+<div class="success-message">
+<div class = "alert alert-success background-success" style="z-index: 10 ; position: absolute;   right:100px;
+  top: 40px;">
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+<div class="card">
+<div class="card-header col-md-12">
+<h6 style="display: inline;"><b>Language Course List</b></h6>
+<a href="{% url 'cmsapp:receptionistlanguagecoursecreate' %}" style="float: right;"><i class="icofont icofont-plus-circle" style="font-size: 40px !important; color: #1bc6cc;"></i></a>
+</div>
+<div class="card-block task-list">
+<div class="table-responsive">
+<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Title</th>
+<th>Fee</th>
+<th>Schedule</th>
+<th>Seats</th>
+<th>Teacher</th>
+<th>Duration</th>
+<th>Study Materials</th>
+<th>Books</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+	{% for language in receptionistlanguagecourselist %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{language.title}}</td>
+<td>{{language.fee}}</td>
+<td>{{language.schedule}}</td>
+<td>{{language.seats}}</td>
+<td>{{language.teacher}}</td>
+<td>{{language.duration}}</td>
+<td>
+{% for studymaterial in language.language_course.all%}
+<a href="{{studymaterial.study_file.url}}" download>{{studymaterial.study_file}} </a>
+{% endfor %}
+</td>
+<td>{{language.books}}</td>
+<td>
+<a href="{% url 'cmsapp:receptionistlanguagecourseupdate' language.id %}" style="padding-right: 7px;  margin: 5px;"> 
+<i class="icofont icofont-refresh" style="font-size: 20px !important;"></i>
+</a>
+<!-- <a data-remote="{% url 'cmsapp:receptionistlanguagecoursedelete' language.id %}" data-toggle="modal" data-target="#cms" href="{% url 'cmsapp:receptionistlanguagecoursedelete' language.id %}" class=" btn btn-mat btn-info btn-round pull-right" style="margin: 5px;">
+<i class="material-icons">delete</i>
+</a> -->
+</td> 
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}
+
+
+
+	

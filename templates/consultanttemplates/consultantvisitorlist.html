@@ -1,0 +1,72 @@
+{% extends 'consultanttemplates/consultantbase.html' %}
+{% load static %}
+{% block active6 %}active{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block body %}
+<div class="page-header">
+<div class="row align-items-end">
+<div class="col-lg-8">
+<div class="page-header-title">
+<div class="d-inline">
+<h4>Visitor List</h4>
+<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+
+<div class="card">
+<div class="card-header col-md-10">
+<h5>Visitor List</h5>
+</div>
+<div class="card-block task-list">
+<div class="table-responsive">
+<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Name</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Source</th>
+<th>Visited Date</th>
+<th>Purpose</th>
+
+
+
+</tr>
+</thead>
+<tbody>
+    {% for visitor in consultantvisitorlist %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{visitor.name}}</td>
+<td>{{visitor.address}}</td>
+<td>{{visitor.phone}}</td>
+<td>{{visitor.email}}</td>
+<td>{{visitor.source}}</td>
+<td>{{visitor.visited_date}}</td>
+<td>{{visitor.purpose}}</td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+

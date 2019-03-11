@@ -1,0 +1,95 @@
+{% extends 'receptionisttemplates/receptionistbase.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="page-body">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card">
+				<div class="card-header" style="padding-bottom: 0px;">
+					<h6><b>Language Course Create Form</b></h6>
+				</div>
+				<div class="card-block">
+					<div class="j-wrapper j-wrapper-640">
+						<form method="POST" class="j-pro" id="j-pro" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="j-content">
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<div class="j-input">
+											<label class="j-icon-right" for="first_name">
+											<i class="icofont icofont-book-alt"></i>
+											</label>
+											{{form.title}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<div class="j-input">
+											<label class="j-icon-right" for="post">
+											<i class="icofont icofont-file-code"></i>
+											</label>
+											{{form.fee}}
+										</div>
+									</div>
+								</div>
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<label class="j-label">Select Teacher</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="first_name">
+											<i class="icofont icofont-ui-user"></i>
+											</label>
+											{{form.teacher}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<label class="j-label">Seat Status</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="phone">
+											<i class="icofont icofont-options"></i>
+											</label>
+											{{form.seats}}
+											 <span class="j-tooltip j-tooltip-right-top">Your contact phone number</span>
+										</div>
+									</div>
+								</div>
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<div class="j-input">
+											<label class="j-icon-right" for="city">
+											<i class="icofont icofont-clock-time"></i>
+											</label>
+											 {{form.duration}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<div class="j-input">
+											<label class="j-icon-right" for="post">
+											<i class="icofont icofont-book-alt"></i>
+											</label>
+											{{form.books}}
+										</div>
+									</div>
+								</div>
+								<div class="j-unit">
+									<div class="j-input">
+										{{form.schedule}}
+										<span class="j-tooltip j-tooltip-right-top">Schedule of Language Course</span>
+									</div>
+								</div>
+								<div class="j-response"></div>
+							</div>
+							<div class="j-footer">
+								<button type="submit" class="btn btn-primary">Send</button>
+								 <button type="reset" class="btn btn-default m-r-20">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}  

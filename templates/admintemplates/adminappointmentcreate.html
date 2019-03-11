@@ -1,0 +1,116 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+
+<div id="pcoded" class="pcoded">
+<div class="pcoded-overlay-box"></div>
+<div class="pcoded-container navbar-wrapper">
+
+<div class="pcoded-content">
+<div class="pcoded-inner-content">
+
+<div class="main-body">
+<div class="page-wrapper">
+
+<div class="page-header">
+<div class="row align-items-end">
+<div class="col-lg-8">
+<div class="page-header-title">
+<div class="d-inline">
+<h4>Suggestion form</h4>
+<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+</div>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="page-header-breadcrumb">
+<ul class="breadcrumb-title">
+<li class="breadcrumb-item">
+<a href="index.html"> <i class="feather icon-home"></i> </a>
+</li>
+<li class="breadcrumb-item"><a href="#!">Ready To Use</a>
+</li>
+<li class="breadcrumb-item"><a href="#!">Suggestion form</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="page-body">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				<h5>Appointment Form</h5>
+			</div>
+			<div class="card-block">
+				<div class="j-wrapper" style="padding:0;">
+					<form method="POST" class="j-pro" id="j-pro" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="j-content">
+							<div class="j-row">
+								<div class="j-span6 j-unit">
+									<div class="j-input">
+										{{form.lead}}
+									</div>
+								</div>
+								<div class="j-span6 j-unit">
+									<div class="j-input">
+										{{form.consultant}}
+									</div>
+								</div>
+							</div>
+							<div class="j-unit">
+								<div class="j-input">
+									<label class="j-icon-left" for="email">
+									<i class="icofont icofont-envelope"></i>
+									</label>
+									{{form.subject}}
+								</div>
+							</div>
+							<div class="j-divider j-gap-bottom-25"></div>
+							<div class="j-unit">
+								<div class="j-input">
+									<label class="j-icon-left" for="subject">
+									<i class="icofont icofont-ui-calendar"></i>
+									</label>
+									{{form.appointment_date}}
+								</div>
+							</div>
+							<div class="j-divider j-gap-bottom-25"></div>
+							<div class="j-unit">
+								<div class="j-input">
+									{{form.status}}
+								</div>
+							</div>
+							<div class="j-unit">
+								<div class="j-input">
+									<label class="j-icon-left" for="message">
+									<i class="icofont icofont-file-text"></i>
+									</label>
+									{{form.note}}
+									<span class="j-tooltip j-tooltip-right-top">Describe your proposal as detailed as possible</span>
+								</div>
+							</div>
+							<div class="j-response"></div>
+						</div>
+						<div class="j-footer">
+							<button type="submit" class="btn btn-primary">Create</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

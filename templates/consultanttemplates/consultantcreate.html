@@ -1,0 +1,80 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+{% block body %}
+<div class="card-block">
+<form class="md-float-material post-form form-material" method="POST" >
+    {% csrf_token %}
+    <div class="text-center">
+    <!-- <img src="{% static 'files/assets/images/logo.png' %}" alt="logo.png"> -->
+    </div>
+    <div class="auth-box card">
+    <div class="card-block">
+    <div class="row m-b-20">
+    <div class="col-md-12">
+    <h3 class="text-center txt-primary">Consultant Registration</h3>
+    </div>
+    </div>
+    <div class="form-group form-primary">
+    <label class="j-label">Username</label>
+    {{form.username}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="form-group form-primary">
+        <label class="j-label">Email</label>
+        {{form.email}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="row">
+    <div class="col-sm-6">
+     <div class="form-group form-primary">
+    <label class="j-label">Password</label>
+    {{form.password1}}
+    <span class="form-bar"></span>
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="form-group form-primary">
+        <label class="j-label">Confirm Password</label>
+        {{form.password2}}
+    <span class="form-bar"></span>
+    </div>
+    </div>
+    </div>
+    <div class="form-group form-primary">
+        <label class="j-label">Name</label>
+        {{form.name}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="form-group form-primary">
+        <label class="j-label">Phone</label>
+        {{form.phone}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="form-group form-primary">
+        <label class="j-label">Address</label>
+        {{form.address}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="form-group form-primary">
+        <label class="j-label">About</label>
+        {{form.about}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="form-group form-primary">
+    <h6>Upload Image</h6>
+    <span class="form-bar"></span>
+    </div>
+    <div class="form-group form-primary">
+    {{form.image}}
+    <span class="form-bar"></span>
+    </div>
+    <div class="row m-t-30">
+    <div class="col-md-12">
+    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Register</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+</div>
+{% endblock %}

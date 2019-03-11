@@ -1,0 +1,163 @@
+{% extends 'receptionisttemplates/receptionistbase.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="page-body">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card">
+				<div class="card-header">
+					<h5>University Create Form</h5>
+				</div>
+				<div class="card-block">
+					<div class="j-wrapper">
+						<form method="POST" class="j-pro" id="j-pro" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="j-content">
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<label class="j-label">Name</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="first_name">
+											<i class="icofont icofont-ui-user"></i>
+											</label>
+
+											{{form.name}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<label class="j-label">Relation</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="last_name">
+											<i class="icofont icofont-ui-user"></i>
+											</label>
+											{{form.relation}}
+										</div>
+									</div>
+								</div>
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<label class="j-label">Email</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="email">
+											<i class="icofont icofont-envelope"></i>
+											</label>
+											{{form.email}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<label class="j-label">Phone</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="phone">
+											<i class="icofont icofont-phone"></i>
+											</label>
+											{{form.phone}}
+											 <span class="j-tooltip j-tooltip-right-top">Your contact phone number</span>
+										</div>
+									</div>
+								</div>
+								<div class="divider gap-bottom-25"></div>
+								<div class="j-unit">
+									<label class="j-label">Select Country</label>
+									<label class="j-input j-select">
+									{{form.country}}
+									<i></i>
+									</label>
+								</div>
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<label class="j-label">Select Deadline</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="city">
+											<i class="icofont icofont-building"></i>
+											</label>
+											 {{form.deadline}}
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<label class="j-label">Select Term</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="last_name">
+											<i class="icofont icofont-ui-user"></i>
+											</label>
+											{{form.term}}
+										</div>
+									</div>
+								</div>
+								<div class="j-row">
+									<div class="j-span6 j-unit">
+										<label class="j-label">Address</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="city">
+											<i class="icofont icofont-building"></i>
+											</label>
+											 {{form.address}}
+											 <span class="j-tooltip j-tooltip-right-top">Enter Detail Address of University</span>
+										</div>
+									</div>
+									<div class="j-span6 j-unit">
+										<label class="j-label">Contact Person</label>
+										<div class="j-input">
+											<label class="j-icon-right" for="last_name">
+											<i class="icofont icofont-ui-user"></i>
+											</label>
+											{{form.contact_person}}
+										</div>
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">Select Image</label>
+									<div class="j-input">
+										{{form.image}}
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">Requirements</label>
+									<div class="j-input">
+										{{form.requirements}}
+										<span class="j-tooltip j-tooltip-right-top">Requirements of University</span>
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">About</label>
+									<div class="j-input">
+										{{form.about}}
+										<span class="j-tooltip j-tooltip-right-top">Any useful information about University</span>
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">Features</label>
+									<div class="j-input">
+										{{form.features}}
+										<span class="j-tooltip j-tooltip-right-top">Features of University</span>
+									</div>
+								</div>
+								<div class="j-unit">
+									<label class="j-label">Scholarship</label>
+									<div class="j-input">
+										{{form.scholarship}}
+										<span class="j-tooltip j-tooltip-right-top">Scholarship Plans</span>
+									</div>
+								</div>
+								<div class="j-response"></div>
+							</div>
+							<div class="j-footer">
+								<button type="submit" class="btn btn-primary">Send</button>
+								 <button type="reset" class="btn btn-default m-r-20">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}

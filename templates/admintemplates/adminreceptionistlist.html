@@ -1,0 +1,64 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+{% block active5 %}active{% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+{% if messages%}
+<div class="success-message">
+<div class = "alert alert-success background-success" style="z-index: 10 ; position: absolute;   right:100px;
+  top: 40px;">
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+<div class="card">
+	<div class="card-header col-md-12">
+	   <h5 style="display: inline;"><b> Receptionist List</b></h5>
+		<a href="{% url 'cmsapp:receptionistregistration' %}" style="float: right;"><i class="icofont icofont-plus-circle" style="font-size: 40px !important; color: #1bc6cc;"></i></a>
+	</div>
+	<div class="card-block task-list">
+		<div class="table-responsive">
+			<table id="datatables" class="table dt-responsive task-list-table table-striped table-bordered nowrap">
+				<thead>
+					<tr>
+						<th>S.N</th>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				 {% for receptionist in adminreceptionistlist %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td><a href="{% url 'cmsapp:adminreceptionistdetail' receptionist.id %}">{{receptionist.name}}</a></td>
+						<td>{{receptionist.address}}</td>
+						<td>{{receptionist.phone}}</td>
+						<td>{{receptionist.email}}</td>
+						<td>
+							<a data-remote="{% url 'cmsapp:adminreceptionistdelete' receptionist.id %}" data-toggle="modal" data-target="#cms" href="{% url 'cmsapp:adminreceptionistdelete' receptionist.id %}" style="padding-right: 7px; margin: 5px;">
+							<i class="icofont icofont-trash" style="font-size: 20px !important;"></i>
+							</a>
+							<a href="{% url 'cmsapp:adminreceptionistupdate' receptionist.id %}" style="padding-right: 7px;  margin: 5px;"> 
+							<i class="icofont icofont-refresh" style="font-size: 20px !important;"></i>
+							</a></td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
